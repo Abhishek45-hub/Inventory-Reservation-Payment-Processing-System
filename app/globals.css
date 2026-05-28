@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #05070d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #05070d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.grid-fade {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 18% 12%, rgba(71, 245, 200, 0.18), transparent 30rem),
+    radial-gradient(circle at 82% 26%, rgba(59, 130, 246, 0.2), transparent 32rem),
+    radial-gradient(circle at 58% 80%, rgba(249, 197, 106, 0.11), transparent 28rem);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto;
+  mask-image: linear-gradient(to bottom, black, black 74%, transparent);
+}
+
+.pulse-orbit {
+  position: absolute;
+  z-index: -2;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid rgba(71, 245, 200, 0.18);
+  border-radius: 999px;
+  filter: blur(0.2px);
+  animation: floatOrbit 8s ease-in-out infinite;
+}
+
+.pulse-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 3rem;
+  border-radius: inherit;
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 70px rgba(59, 130, 246, 0.24);
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.glow-border {
+  pointer-events: none;
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(71, 245, 200, 0.45), transparent 35%, rgba(59, 130, 246, 0.38), transparent 72%, rgba(249, 197, 106, 0.32));
+  opacity: 0.7;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+@keyframes floatOrbit {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.48;
+  }
+  50% {
+    transform: translate3d(16px, -20px, 0) rotate(18deg);
+    opacity: 0.82;
+  }
+}
+
+@media (max-width: 640px) {
+  .pulse-orbit {
+    width: 12rem;
+    height: 12rem;
+  }
+}
